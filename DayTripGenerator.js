@@ -54,27 +54,58 @@ function randomChoice(optionsArray){
 
 // alert(randomChoice(test1)); //success!
 
+
 function generateDayTrip(destinations,restaurants,transports,entertainments){
     let destination = randomChoice(destinations);
     let restaurant = randomChoice(restaurants);
     let transport = randomChoice(transports);
     let entertainment = randomChoice(entertainments);
-    let dayTrip = "We will be travelling to " + destination + ". There, we will be dining at the eloquent " + restaurant + ". Afterwards, we will take our " + transport + " to the " + entertainment + ".";
-    return dayTrip;
+    let resultArray = [destination,restaurant,transport,entertainment]
+    return resultArray;
 }
 
-let dest = ["Whites City, New Mexico (population: 147)","Akhiok, Alaska (population: 70)", "Freeport, Kansas (population: 5)", "Vernon, California (population: 112)"];
-let rest = ["Bob's Burgers", "Los Pollos Hermanos", "Jack Rabbit Slim's", "Pizza Planet", "GoodBurger", "Paddy's Pub"];
-let transp = ["Tesla","space shuttle","unicycle","magic carpet","camel"];
-let ent = ["juggling show", "Renaissance fair", "sword-swallowing convention", "underwater basket weaving world championships"];
+let dests = ["Whites City, New Mexico (population: 147)","Akhiok, Alaska (population: 70)", "Freeport, Kansas (population: 5)",
+ "Vernon, California (population: 112)"];
+let rests = ["Bob's Burgers", "Los Pollos Hermanos", "Jack Rabbit Slim's", "Pizza Planet", "GoodBurger", "Paddy's Pub"];
+let transps = ["Tesla","space shuttle","unicycle","magic carpet","camel"];
+let ents = ["juggling show", "Renaissance fair", "sword-swallowing convention", "underwater basket weaving world championships"];
 
-let dayTrip = generateDayTrip(dest,rest,transp,ent);
+let dayTripArray = generateDayTrip(dests,rests,transps,ents);
 
-let userYesNo = prompt("Hello dear user! Welcome to your day trip generator. \nHere's the plan: \n"+dayTrip+"\n Sound good? Enter YES or NO!");
+let finalDest = dayTripArray[0];
+let finalRest = dayTripArray[1];
+let finalTransp = dayTripArray[2];
+let finalEnt = dayTripArray[3];
+let finalDayTripStatement = "We will be travelling to "+finalDest+", where will dine at "+finalRest+
+". Afterwards, we will travel by "+finalTransp+" to enjoy the "+finalEnt+".";
 
-while(userChoice === "NO"){
-    dayTrip = generateDayTrip(dest,rest,transp,ent);
-    userYesNo = prompt("I see... how about this?\n"+dayTrip+"Sound good? Enter YES or NO!");
+// console.log(dayTripArray);//testing... success!
+// console.log(finalDest+finalRest+finalTransp+finalEnt);//testing... success!
+
+let firstPrompt = "Hello dear user! Here is your day trip: \n\n"+finalDayTripStatement+"\n\nDoes that sound good? "+
+"If so, enter YES. If not, enter the elements you would like to change in ALL CAPS, separated by one space. You may choose to change DESTINATION, RESTAURANT, TRANSPORT, and/or ENTERTAINMENT.";
+
+let userChoice = prompt(firstPrompt);
+
+while (userChoice !== "YES"){
+    if (userChoice.includes("DESTINATION")){
+        finalDest = randomChoice(dests);
+    }
+    if (userChoice.includes("RESTAURANT")){
+        finalRest = randomChoice(rests);
+    }
+    if (userChoice.includes("TRANSPORT")){
+        finalTransp = randomChoice(transps);
+    }
+    if (userChoice.includes("ENTERTAINMENT")){
+        finalEnt = randomChoice(ents);
+    }
+    finalDayTripStatement = "We will be travelling to "+finalDest+", where will dine at "+finalRest+
+    ". Afterwards, we will travel by "+finalTransp+" to enjoy the "+finalEnt+".";
+    userChoice = prompt("Very well.. what about this? \n\n"+finalDayTripStatement+
+    "\n\nIf you approve, enter YES. Otherwise, enter the elements you'd like to change (DESTINATION, RESTAURANT, TRANSPORT, and/or ENTERTAINMENT).")
 }
 
-console.log("Great choice! Here's your final selection:\n"+dayTrip); //made it! Now to test...
+console.log("Excellent choice! " + finalDayTripStatement +" Enjoy your trip!");
+
+
