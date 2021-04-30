@@ -26,29 +26,36 @@ let firstPrompt = "Hello dear user! Here is your day trip: \n\n"+dayTripStatemen
 // function doTheThing(){ //
     let userChoice = prompt(firstPrompt);
 
-    while (userChoice !== "YES"){
-        if (userChoice.includes("DESTINATION")){//
+    while (userChoice !== "YES" && dests.length > 0 || rests.length > 0 || transps.length > 0 || ents.length > 0){
+        if (userChoice.includes("DESTINATION") && dests.length>0){//
             dests = eliminateChoice(dests,randomDest);
             randomDest = randomChoice(dests);
             if (dests.length === 0){
                 randomDest = prompt("Well fine then, if you're so picky, enter your own destination!");
             }
         }
-        if (userChoice.includes("RESTAURANT")){
+        if (userChoice.includes("RESTAURANT") && rests.length > 0){
             rests = eliminateChoice(rests,randomRest);
             randomRest = randomChoice(rests);
             if (rests.length === 0){
                 randomRest = prompt("Well fine then, if you're so picky, enter your own restaurant!");
             }
         }
-        if (userChoice.includes("TRANSPORT")){
-            transps = 
+        if (userChoice.includes("TRANSPORT") && transps.length > 0){
+            transps = eliminateChoice(transps,randomTransp)
             randomTransp = randomChoice(transps);
+            if (transps.length === 0){
+                randomTransp = prompt("Well fine then, if you're so picky, enter your own mode of transport!");
+            }
         }
-        if (userChoice.includes("ENTERTAINMENT")){
+        if (userChoice.includes("ENTERTAINMENT") && ents.length > 0){
+            ents = eliminateChoice(ents, randomEnt);
             randomEnt = randomChoice(ents);
+            if (ents.length === 0){
+                randomEnt = prompt("Well fine then, if you're so picky, enter your own form of entertainment!");
+            }
         }
-        dayTripStatement = "We will be travelling to "+randomDest+", where will dine at "+randomRest+
+        dayTripStatement = "We will be travelling to "+randomDest+", where we will dine at "+randomRest+
         ". Afterwards, we will travel by "+randomTransp+" to enjoy the "+randomEnt+".";
         userChoice = prompt("Very well.. what about this? \n\n"+dayTripStatement+
         "\n\nIf you approve, enter YES. Otherwise, enter the elements you'd like to change (DESTINATION, RESTAURANT, TRANSPORT, and/or ENTERTAINMENT).")
