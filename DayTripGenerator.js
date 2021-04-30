@@ -12,11 +12,6 @@ function randomChoice(optionsArray){
     return randomChoice;
 }
 
-let randomDest = randomChoice(dests);
-let randomRest = randomChoice(rests);
-let randomTransp = randomChoice(transps);
-let randomEnt = randomChoice(ents);
-
 function eliminateChoice(optionsArray, currentPick){
     let newOptions = [];
         for(let i=0; i<optionsArray.length; i++){
@@ -24,21 +19,25 @@ function eliminateChoice(optionsArray, currentPick){
                 newOptions.push(optionsArray[i]);
             }
         }
-        optionsArray = newOptions;
-        return newOptions;
+    return newOptions;
 }
+
+let randomDest = randomChoice(dests);
+let randomRest = randomChoice(rests);
+let randomTransp = randomChoice(transps);
+let randomEnt = randomChoice(ents);
 
 let dayTripStatement = "We will be travelling to "+randomDest+", where will dine at "+randomRest+
 ". Afterwards, we will travel by "+randomTransp+" to enjoy the "+randomEnt+".";
 
 let firstPrompt = "Hello dear user! Here is your day trip: \n\n"+dayTripStatement+"\n\nDoes that sound good? "+
-"If so, enter YES. If not, enter the elements you would like to change in ALL CAPS, separated by one space. You may choose to change DESTINATION, RESTAURANT, TRANSPORT, and/or ENTERTAINMENT.";
+"If so, enter YES. If not, enter the elements you would like to change, separated by one space. You may choose to change DESTINATION, RESTAURANT, TRANSPORT, and/or ENTERTAINMENT.";
 
 
-let userChoice = prompt(firstPrompt);
+let userChoice = prompt(firstPrompt).toUpperCase();
 
 while (userChoice !== "YES" && (dests.length > 0 || rests.length > 0 || transps.length > 0 || ents.length > 0)){
-    if (userChoice.includes("DESTINATION") && dests.length>0){//
+    if (userChoice.includes("DESTINATION") && dests.length>0){
         dests = eliminateChoice(dests,randomDest);
         randomDest = randomChoice(dests);
         if (dests.length === 0){
@@ -69,11 +68,11 @@ while (userChoice !== "YES" && (dests.length > 0 || rests.length > 0 || transps.
     dayTripStatement = "We will be travelling to "+randomDest+", where we will dine at "+randomRest+
     ". Afterwards, we will travel by "+randomTransp+" to enjoy the "+randomEnt+".";
     userChoice = prompt("Very well.. what about this? \n\n"+dayTripStatement+
-    "\n\nIf you approve, enter YES. Otherwise, enter the elements you'd like to change (DESTINATION, RESTAURANT, TRANSPORT, and/or ENTERTAINMENT).")
+    "\n\nIf you approve, enter YES. Otherwise, enter the elements you'd like to change (DESTINATION, RESTAURANT, TRANSPORT, and/or ENTERTAINMENT).").toUpperCase();
 }
 
 if (dests.length === 0 && rests.length === 0 && transps.length === 0 && ents.length === 0){
-    console.log("Alright, this is what you're left with, Mr./Ms. \"I'm picky\"...\n" + dayTripStatement+"\n\n ...You better enjoy it!!!!");
+    console.log("Alright, this is what you're left with, Mr./Ms. \"I'm picky\"...\n\n" + dayTripStatement+"\n\n ...You better enjoy it!!!!");
 }
 else{
     console.log("Excellent choice! " + dayTripStatement +" Enjoy your trip!");
