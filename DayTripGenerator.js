@@ -1,8 +1,8 @@
 let dests = ["Whites City, New Mexico (population: 147)","Akhiok, Alaska (population: 70)", "Freeport, Kansas (population: 5)",
  "Vernon, California (population: 112)"];
-let rests = ["Bob's Burgers", "Los Pollos Hermanos", "Jack Rabbit Slim's", "Pizza Planet", "GoodBurger", "Paddy's Pub"];
-let transps = ["Tesla","space shuttle","unicycle","magic carpet","camel"];
-let ents = ["juggling show", "Renaissance fair", "sword-swallowing convention", "underwater basket weaving world championships"];
+let rests = ["Bob's Burgers", "Los Pollos Hermanos", "Jack Rabbit Slim's", "Pizza Planet", "GoodBurger", "Paddy's Pub","Cafe Nervosa"];
+let transps = ["Tesla","space shuttle","unicycle","magic carpet","camel","Magic School Bus","pegasus","teleportation"];
+let ents = ["juggling show", "Renaissance fair", "sword-swallowing convention", "underwater basket weaving world championships","poetry slam","Packers game ;)"];
 
 
 function randomChoice(optionsArray){
