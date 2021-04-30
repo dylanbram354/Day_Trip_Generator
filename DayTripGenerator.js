@@ -27,7 +27,7 @@ let randomRest = randomChoice(rests);
 let randomTransp = randomChoice(transps);
 let randomEnt = randomChoice(ents);
 
-let dayTripStatement = "We will be travelling to "+randomDest+", where will dine at "+randomRest+
+let dayTripStatement = "We will be travelling to "+randomDest+", where we will dine at "+randomRest+
 ". Afterwards, we will travel by "+randomTransp+" to enjoy the "+randomEnt+".";
 
 let firstPrompt = "Hello dear user! Here is your day trip: \n\n"+dayTripStatement+"\n\nDoes that sound good? "+
