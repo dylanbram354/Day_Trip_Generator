@@ -1,2 +1,3 @@
 # Day_Trip_Generator
-devCodeCamp project - "Day Trip Generator"
+
+A simple Javascript application allowing users to randomly generate plans for a day trip.
